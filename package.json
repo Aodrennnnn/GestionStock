@@ -1,0 +1,19 @@
+{
+  "name": "gestionstock",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "sql": "^0.78.0",
+    "sqlite": "^4.2.0",
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "description": ""
+}

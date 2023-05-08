@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Suivi du Stock de Surplus</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="top-layer">
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+    </div>
+    <h1 class="main-title">Suivi du Stock de Surplus</h1>
+    <div class="clock">
+      <span id="clock"></span>
+    </div>
+    
+  </div>
+
+  <div class="container">
+    <div class="left-section">
+      <h2>Stock</h2>
+      <form>
+      <div class="form-row">
+        <label for="produit">Produit:</label>
+        <select id="produit" required>
+          <option value="">Sélectionner un produit</option>
+          <option value="produit1">Produit 1</option>
+          <option value="produit2">Produit 2</option>
+          <!-- Ajouter les autres options ici -->
+        </select>
+      </div>
+    </form>
+      <table>
+        <tr>
+          <th>Pièce</th>
+          <th>Quantité</th>
+        </tr>
+        <tr>
+          <td>Ligne 1, Colonne 1</td>
+          <td>Ligne 1, Colonne 2</td>
+        </tr>
+        <tr>
+          <td>Ligne 2, Colonne 1</td>
+          <td>Ligne 2, Colonne 2</td>
+        </tr>
+        <!-- Ajouter les autres lignes ici -->
+      </table>      
+    </div>
+    <div class="right-section">
+      <h2>Formulaire</h2>
+      <form>
+        <div class="form-row">
+          <div class="radio-container">
+            <label for="prise">Prise</label>
+            <input type="radio" id="prise" name="choice" value="prise" required>
+          </div>
+          <div class="radio-container">
+            <label for="mise">Mise</label>
+            <input type="radio" id="mise" name="choice" value="mise" required>
+          </div>
+        </div>
+        
+      
+        <div class="form-row" id="cause-row" style="display: none;">
+          <label for="cause">Cause:</label>
+          <select id="cause" required>
+            <option value="">Sélectionner une cause</option>
+            <option value="manque">Manque Train</option>
+            <option value="ko">KO</option>
+            <option value="autre">Autre</option>
+            <!-- Ajouter les autres options ici -->
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="date">Date:</label>
+          <input type="date" id="date" value="" required>
+        </div>
+        <div class="form-row">
+          <label for="pole">Pôle:</label>
+          <select id="pole" required>
+            <option value="">Sélectionner un pôle</option>
+            <option value="pole1">Pôle 1</option>
+            <option value="pole2">Pôle 2</option>
+            <!-- Ajouter les autres options ici -->
+          </select>
+        </div>
+      
+        <div class="form-row">
+          <label for="produit">Produit:</label>
+          <select id="produit" required>
+            <option value="">Sélectionner un produit</option>
+            <option value="produit1">Produit 1</option>
+            <option value="produit2">Produit 2</option>
+            <!-- Ajouter les autres options ici -->
+          </select>
+        </div>
+      
+        <div class="form-row">
+          <label for="piece">Pièce:</label>
+          <select id="piece" required>
+            <option value="">Sélectionner une pièce</option>
+            <option value="piece1">Piece 1</option>
+            <option value="piece2">Piece 2</option>
+            <!-- Les options seront ajoutées dynamiquement en JavaScript -->
+          </select>
+        </div>
+      
+        <div class="form-row">
+          <label for="quantity">Quantité:</label>
+          <input type="number" id="quantity" required>
+        </div>
+      
+        <div class="form-row">
+          <input type="submit" value="Enregistrer">
+          <button type="reset" class="reset-button">Effacer</button>
+        </div>
+      </form>
+      
+      <script>
+        // Récupérer la date du jour
+        const today = new Date().toISOString().split('T')[0];
+
+        // Sélectionner l'élément de saisie de date
+        const dateInput = document.getElementById('date');
+
+        // Définir la valeur de la date du jour
+        dateInput.value = today;
+        const choiceRadios = document.querySelectorAll('input[name="choice"]');
+        const causeRow = document.getElementById('cause-row');
+        const causeInput = document.getElementById('cause');
+      
+        // Function to toggle the visibility of the "cause" field based on the selected choice
+        function toggleCauseField() {
+          if (choiceRadios[0].checked) {
+            causeRow.style.display = 'block';
+            causeInput.setAttribute('required', ''); // Add the "required" attribute
+          } else {
+            causeRow.style.display = 'none';
+            causeInput.removeAttribute('required'); // Remove the "required" attribute
+          }
+        }
+      
+        // Attach event listeners to the choice radios
+        choiceRadios.forEach(radio => {
+          radio.addEventListener('change', toggleCauseField);
+        });
+      </script>
+      
+      
+      
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
